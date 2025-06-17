@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AuthentiCraft – Innovate Your Craft</title>
+  <meta name="description" content="AuthentiCraft – Certify your handmade creations with multilingual digital certificates (PDF + QR code). Simple, affordable, made for artisans.">
+  <meta property="og:title" content="AuthentiCraft – Innovate Your Craft">
+  <meta property="og:description" content="Certify your handmade creations with PDF + QR code. Available in EN / FR / ES. Affordable for global creators.">
+  <meta property="og:image" content="https://www.authenticraft.io/certificate-mockup.png">
+  <meta property="og:url" content="https://www.authenticraft.io">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+
   <style>
     :root {
       --bg-color: #1e1e1e;
@@ -14,6 +21,9 @@
       --accent-color: #3498db;
       --accent-hover: #2980b9;
       --badge-color: #f39c12;
+      --testimonial-bg: rgba(255,255,255,0.05);
+	  --countdown-bg: #3498db;    
+	  --countdown-color: #ffffff;
     }
 
     * {
@@ -37,18 +47,46 @@
     }
 
     .logo {
-      max-width: 160px;
-      margin-bottom: 20px;
-    }
+	   display: block;
+	   max-width: 160px;
+	   margin: 0 auto 40px;
+	}
 
     .badge {
       background-color: var(--badge-color);
       color: white;
-      padding: 5px 10px;
+      padding: 5px 12px;
       font-size: 0.9em;
       border-radius: 5px;
-      margin-bottom: 15px;
+      display: inline-block;
     }
+
+    #countdown {
+	  font-family: 'Orbitron', sans-serif;
+	  background-color: var(--countdown-bg);
+	  color: var(--countdown-color);
+	  font-size: 1.6em;
+	  font-weight: 500;
+	  padding: 10px 20px;
+	  border-radius: 8px;
+	  display: inline-block;
+	  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+	  animation: pulse 1.5s infinite ease-in-out;
+	  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+	}
+	
+	.top-status {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 20px; /* espace uniforme */
+	}
+
+	
+	@keyframes pulse {
+	  0%, 100% { transform: scale(1); }
+	  50%      { transform: scale(1.05); }
+	}
 
     h1 {
       font-size: 2.5em;
@@ -63,7 +101,7 @@
       margin-bottom: 20px;
     }
 
-    p {
+    p.intro {
       font-size: 1.1em;
       margin-bottom: 20px;
       max-width: 600px;
@@ -87,11 +125,40 @@
       font-size: 0.9em;
     }
 
+    .testimonials {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .testimonial {
+      background: var(--testimonial-bg);
+      padding: 12px 15px;
+      border-radius: 6px;
+      font-style: italic;
+      color: #ddd;
+      font-size: 0.95em;
+    }
+
     form {
       margin-top: 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 10px;
+    }
+
+    @media (min-width: 600px) {
+      form {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+      }
+      input[type="email"] {
+        flex: 1;
+        max-width: none;
+      }
     }
 
     input[type="email"] {
@@ -101,7 +168,6 @@
       max-width: 300px;
       border: 1px solid #555;
       border-radius: 8px;
-      margin-bottom: 15px;
       background-color: #333;
       color: #f0f0f0;
     }
@@ -116,11 +182,23 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
       font-weight: 600;
-      width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     button:hover {
       background-color: var(--accent-hover);
+    }
+
+    .qr-code {
+      max-width: 150px;
+      margin: 30px 0 10px;
+    }
+
+    .socials {
+      margin-top: 20px;
+      font-size: 0.9em;
     }
 
     a {
@@ -132,50 +210,65 @@
     a:hover {
       text-decoration: underline;
     }
-
-    .socials {
-      margin-top: 20px;
-      font-size: 0.9em;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-      .features {
-        flex-direction: column;
-        gap: 10px;
-      }
-      input[type="email"] {
-        width: 80%;
-      }
-      button {
-        width: 150px;
-      }
-    }
   </style>
+  
+  <script>
+    function updateCountdown() {
+      const launchDate = new Date("2025-07-17T00:00:00Z").getTime();
+      const now = Date.now();
+      const distance = launchDate - now;
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById("countdown").innerText = days + " days remaining";
+      } else {
+        document.getElementById("countdown").innerText = "🎉 Launched!";
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    document.addEventListener("DOMContentLoaded", updateCountdown);
+  </script>
 </head>
 <body>
   <div class="container">
-    <img src="AuthentiCraft_Logo_Dark.png" alt="AuthentiCraft Logo" class="logo">
-    <div class="badge">Beta Coming Soon</div>
+    <img src="AuthentiCraft_Logo_Dark.png" alt="AuthentiCraft Logo" class="logo" />
+	
+	<div class="top-status">
+	  <div class="badge">🚀 Beta Coming Soon</div>
+	  <div id="countdown"></div>
+	</div>
+		
     <h1>AuthentiCraft – Innovate Your Craft</h1>
-    <div class="subtitle">Bientôt | Coming Soon | Próximamente</div>
-    <p>
-      🌍 Elevate your craft globally with AuthentiCraft! Certify in FR/EN/ES with secure PDF & QR tech. Affordable for creators worldwide.
+    <div class="subtitle">Coming Soon | Bientôt | Próximamente</div>
+    
+	<p class="intro">
+      🌍 Elevate your craft globally with AuthentiCraft! Certify in EN/FR/ES with secure PDF & QR tech. Affordable for creators worldwide.
     </p>
-    <img src="certificate_qr_code.png" alt="AuthentiCraft Certificate Mockup" style="max-width: 250px; margin: 20px 0;">
-    <div class="features">
+    
+	<div class="features">
       <div class="feature">🔒 Secure Certificates</div>
-      <div class="feature">🌐 Multilingual (FR/EN/ES)</div>
+      <div class="feature">🌐 Multilingual (EN/FR/ES)</div>
       <div class="feature">📲 QR Code Integration</div>
     </div>
-    <form action="https://formsubmit.co/contact@authenticraft.io" method="POST">
-      <input type="email" name="email" placeholder="Enter your email to join the beta" required><br>
-      <button type="submit">Join Beta Now</button>
+	
+	<div class="testimonials">
+	  <div class="testimonial">“Great certificates!” – John, USA</div>
+      <div class="testimonial">“Superbe outil pour mes bijoux !” – Marie, France</div>
+      <div class="testimonial">“Certificados geniales!” – Sofía, España</div>
+    </div>
+	
+    <form action="https://formsubmit.co/contact@authenticraft.io" method="POST" aria-label="Join Beta Form">
+      <label for="email" class="visually-hidden">Email address</label>
+      <input id="email" type="email" name="email" placeholder="Your best email" required>
+      <button type="submit" aria-label="Get Early Access">
+        🚀 Get Early Access
+      </button>
     </form>
+	
+	<img src="certificate_qr_code.png" alt="Scan to visit AuthentiCraft" class="qr-code" />
+	
     <div class="socials">
-      📲 Follow us: <a href="https://www.instagram.com/authenticraftofficial" target="_blank">@authenticraftofficial</a> | Contact: <a href="mailto:contact@authenticraft.io">contact@authenticraft.io</a>
+      📲 Instagram: <a href="https://www.instagram.com/authenticraftofficial" target="_blank">@authenticraftofficial</a><br>
+      ✉️ Email: <a href="mailto:contact@authenticraft.io">contact@authenticraft.io</a>
     </div>
   </div>
 </body>
