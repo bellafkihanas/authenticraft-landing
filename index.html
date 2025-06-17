@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AuthentiCraft – Coming Soon</title>
+  <title>AuthentiCraft – Innovate Your Craft</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     :root {
-      --bg-color: #f5e6cc;
-      --text-color: #2c3e50;
-      --accent-color: #2c3e50;
-      --accent-hover: #1a252f;
+      --bg-color: #1e1e1e;
+      --text-color: #f0f0f0;
+      --accent-color: #3498db;
+      --accent-hover: #2980b9;
+      --badge-color: #f39c12;
     }
 
     * {
@@ -26,7 +27,7 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       text-align: center;
-      padding: 40px 20px;
+      padding: 30px 15px;
       line-height: 1.6;
     }
 
@@ -37,32 +38,72 @@
 
     .logo {
       max-width: 160px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      background-color: var(--badge-color);
+      color: white;
+      padding: 5px 10px;
+      font-size: 0.9em;
+      border-radius: 5px;
+      margin-bottom: 15px;
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 2.5em;
       font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--accent-color);
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      color: #bdc3c7;
       margin-bottom: 20px;
     }
 
     p {
       font-size: 1.1em;
       margin-bottom: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      background: rgba(44, 62, 80, 0.2);
+      padding: 10px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.9em;
     }
 
     form {
       margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     input[type="email"] {
       padding: 12px 16px;
       font-size: 1em;
-      width: 70%;
+      width: 100%;
       max-width: 300px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: 8px;
       margin-bottom: 15px;
+      background-color: #333;
+      color: #f0f0f0;
     }
 
     button {
@@ -74,6 +115,8 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      font-weight: 600;
+      width: 200px;
     }
 
     button:hover {
@@ -90,22 +133,24 @@
       text-decoration: underline;
     }
 
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #1e1e1e;
-        color: #f0f0f0;
+    .socials {
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      .features {
+        flex-direction: column;
+        gap: 10px;
       }
       input[type="email"] {
-        background-color: #333;
-        color: #fff;
-        border: 1px solid #555;
+        width: 80%;
       }
       button {
-        background-color: #f0f0f0;
-        color: #1e1e1e;
-      }
-      button:hover {
-        background-color: #dcdcdc;
+        width: 150px;
       }
     }
   </style>
@@ -113,19 +158,25 @@
 <body>
   <div class="container">
     <img src="AuthentiCraft_Logo_Dark.png" alt="AuthentiCraft Logo" class="logo">
-    <h1>AuthentiCraft – Bientôt | Coming Soon | Próximamente</h1>
+    <div class="badge">Beta Coming Soon</div>
+    <h1>AuthentiCraft – Innovate Your Craft</h1>
+    <div class="subtitle">Bientôt | Coming Soon | Próximamente</div>
     <p>
-      🇫🇷 Certifiez vos créations artisanales en français, anglais, espagnol avec des certificats numériques (PDF, QR code). Simple, abordable, pour artisans et créateurs.<br><br>
-      🇬🇧 Certify your handmade creations in French, English, and Spanish with digital certificates (PDF, QR code). Simple, affordable, and made for artisans and creators.<br><br>
-      🇪🇸 Certifica tus creaciones artesanales en francés, inglés y español con certificados digitales (PDF, código QR). Sencillo, accesible y pensado para artesanos y creadores.
+      🌍 Elevate your craft globally with AuthentiCraft! Certify in FR/EN/ES with secure PDF & QR tech. Affordable for creators worldwide.
     </p>
-
-    <form action="https://formsubmit.co/nexicore.it@gmail.com" method="POST">
-      <input type="email" name="email" placeholder="Votre email / Your email / Tu correo" required><br>
-      <button type="submit">S’inscrire / Subscribe / Suscribirse</button>
+    <img src="certificate_qr_code.png" alt="AuthentiCraft Certificate Mockup" style="max-width: 250px; margin: 20px 0;">
+    <div class="features">
+      <div class="feature">🔒 Secure Certificates</div>
+      <div class="feature">🌐 Multilingual (FR/EN/ES)</div>
+      <div class="feature">📲 QR Code Integration</div>
+    </div>
+    <form action="https://formsubmit.co/contact@authenticraft.io" method="POST">
+      <input type="email" name="email" placeholder="Enter your email to join the beta" required><br>
+      <button type="submit">Join Beta Now</button>
     </form>
-
-    <p style="margin-top: 30px;">📸 Suivez-nous sur <a href="https://www.instagram.com/authenticraftofficial" target="_blank">@authenticraftofficial</a></p>
+    <div class="socials">
+      📲 Follow us: <a href="https://www.instagram.com/authenticraftofficial" target="_blank">@authenticraftofficial</a> | Contact: <a href="mailto:contact@authenticraft.io">contact@authenticraft.io</a>
+    </div>
   </div>
 </body>
 </html>
